@@ -9,18 +9,18 @@ import Tag from "../../ui/Tag";
 
 import { useNavigate, useParams } from "react-router-dom";
 import { useMoveBack } from "../../hooks/useMoveBack";
-import { useCheckout } from "../check-in-out/useCheckout.js";
-import { useBooking } from "./useBooking.js";
-import { useDeleteBooking } from "./useDeleteBooking.js";
+import { useCheckout } from "../check-in-out/useCheckout";
+import { useBooking } from "./useBooking";
+import { useDeleteBooking } from "./useDeleteBooking";
 
 import Spinner from "../../ui/Spinner.jsx";
 
-import ConfirmDelete from "../../ui/ConfirmDelete.jsx";
+import ConfirmDelete from "../../ui/ConfirmDelete";
 import Modal from "../../ui/Modal.jsx";
-import SpinnerMini from "../../ui/SpinnerMini.jsx";
+import SpinnerMini from "../../ui/SpinnerMini";
 
-import BookingDataBox from "./BookingDataBox.jsx";
-import Empty from "../../ui/Empty.jsx";
+import BookingDataBox from "./BookingDataBox";
+import Empty from "../../ui/Empty";
 
 const HeadingGroup = styled.div`
   display: flex;
