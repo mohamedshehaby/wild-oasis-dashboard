@@ -9,15 +9,17 @@ import Tag from "../../ui/Tag";
 
 import { useNavigate, useParams } from "react-router-dom";
 import { useMoveBack } from "../../hooks/useMoveBack";
-import Spinner from "../../ui/Spinner.jsx";
+import { useCheckout } from "../check-in-out/useCheckout.js";
 import { useBooking } from "./useBooking.js";
+import { useDeleteBooking } from "./useDeleteBooking.js";
+
+import Spinner from "../../ui/Spinner.jsx";
 
 import ConfirmDelete from "../../ui/ConfirmDelete.jsx";
 import Modal from "../../ui/Modal.jsx";
 import SpinnerMini from "../../ui/SpinnerMini.jsx";
-import { useCheckout } from "../check-in-out/useCheckout.js";
+
 import BookingDataBox from "./BookingDataBox.jsx";
-import { useDeleteBooking } from "./useDeleteBooking.js";
 import Empty from "../../ui/Empty.jsx";
 
 const HeadingGroup = styled.div`
