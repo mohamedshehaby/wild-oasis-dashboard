@@ -9,7 +9,6 @@ import Tag from "../../ui/Tag";
 
 import { useNavigate, useParams } from "react-router-dom";
 import { useMoveBack } from "../../hooks/useMoveBack";
-import { useCheckout } from "../check-in-out/useCheckout";
 import { useBooking } from "./useBooking";
 import { useDeleteBooking } from "./useDeleteBooking";
 
@@ -21,6 +20,7 @@ import SpinnerMini from "../../ui/SpinnerMini";
 
 import BookingDataBox from "./BookingDataBox";
 import Empty from "../../ui/Empty";
+import { useCheckout } from "../check-in-out/useCheckOut.js";
 
 const HeadingGroup = styled.div`
   display: flex;
