@@ -1,7 +1,7 @@
-import { format, isToday } from 'date-fns';
-import styled from 'styled-components';
+import { format, isToday } from "date-fns";
+import styled from "styled-components";
 
-import Tag from '../../ui/Tag';
+import Tag from "../../ui/Tag";
 
 import {
   HiArrowDownOnSquare,
@@ -9,20 +9,20 @@ import {
   HiEllipsisVertical,
   HiEye,
   HiTrash,
-} from 'react-icons/hi2';
-import { useNavigate } from 'react-router-dom';
-import ConfirmDelete from '../../ui/ConfirmDelete';
-import Menus from '../../ui/Menus';
-import Modal from '../../ui/Modal';
-import { formatCurrency, formatDistanceFromNow } from '../../utils/helpers';
-import { useCheckout } from '../check-in-out/useCheckout';
-import { useDeleteBooking } from './useDeleteBooking';
+} from "react-icons/hi2";
+import { useNavigate } from "react-router-dom";
+import ConfirmDelete from "../../ui/ConfirmDelete";
+import Menus from "../../ui/Menus";
+import Modal from "../../ui/Modal";
+import { formatCurrency, formatDistanceFromNow } from "../../utils/helpers";
+import { useCheckout } from "../check-in-out/useCheckOut";
+import { useDeleteBooking } from "./useDeleteBooking";
 
 const Cabin = styled.div`
   font-size: 1.6rem;
   font-weight: 600;
   color: var(--color-grey-600);
-  font-family: 'Sono';
+  font-family: "Sono";
 `;
 
 const Stacked = styled.div`
@@ -41,7 +41,7 @@ const Stacked = styled.div`
 `;
 
 const Amount = styled.div`
-  font-family: 'Sono';
+  font-family: "Sono";
   font-weight: 500;
 `;
 
@@ -60,17 +60,18 @@ function BookingRow({
   },
 }) {
   const statusToTagName = {
-    unconfirmed: 'blue',
-    'checked-in': 'green',
-    'checked-out': 'silver',
+    unconfirmed: "blue",
+    "checked-in": "green",
+    "checked-out": "silver",
   };
 
   const navigate = useNavigate();
 
   const { isCheckingOut, checkOut } = useCheckout();
   const { isDeleting, deleteBooking } = useDeleteBooking();
+
   function handleCheckout() {
-    checkOut({ bookingId, updatedBooking: { status: 'checked-out' } });
+    checkOut({ bookingId, updatedBooking: { status: "checked-out" } });
   }
 
   return (
@@ -85,17 +86,17 @@ function BookingRow({
       <Stacked>
         <span>
           {isToday(new Date(startDate))
-            ? 'Today'
-            : formatDistanceFromNow(startDate)}{' '}
+            ? "Today"
+            : formatDistanceFromNow(startDate)}{" "}
           &rarr; {numNights} night stay
         </span>
         <span>
-          {format(new Date(startDate), 'MMM dd yyyy')} &mdash;{' '}
-          {format(new Date(endDate), 'MMM dd yyyy')}
+          {format(new Date(startDate), "MMM dd yyyy")} &mdash;{" "}
+          {format(new Date(endDate), "MMM dd yyyy")}
         </span>
       </Stacked>
 
-      <Tag type={statusToTagName[status]}>{status.replace('-', ' ')}</Tag>
+      <Tag type={statusToTagName[status]}>{status.replace("-", " ")}</Tag>
 
       <Amount>{formatCurrency(totalPrice)}</Amount>
       <Menus.Menu>
@@ -114,31 +115,31 @@ function BookingRow({
                 <HiEye /> <span>See details</span>
               </Menus.Button>
 
-              {status === 'unconfirmed' && (
+              {status === "unconfirmed" && (
                 <Menus.Button
                   onClick={() => navigate(`/check-in/${bookingId}`)}
                 >
                   <HiArrowDownOnSquare /> <span>Check in</span>
                 </Menus.Button>
               )}
-              {status === 'checked-in' && (
+              {status === "checked-in" && (
                 <Menus.Button onClick={handleCheckout} disabled={isCheckingOut}>
                   <HiArrowUpOnSquare /> <span>Check out</span>
                 </Menus.Button>
               )}
 
-              <Modal.Open opens='delete-booking'>
+              <Modal.Open opens="delete-booking">
                 <Menus.Button>
                   <HiTrash /> <span>Delete booking</span>
                 </Menus.Button>
               </Modal.Open>
             </Menus.List>
 
-            <Modal.Window name='delete-booking'>
+            <Modal.Window name="delete-booking">
               <ConfirmDelete
                 onConfirm={() => deleteBooking(bookingId)}
                 disabled={isDeleting}
-                resourceName='cabin'
+                resourceName="cabin"
               />
             </Modal.Window>
           </Menus.Menu>
